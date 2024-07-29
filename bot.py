@@ -5,7 +5,6 @@ from pyrogram import Client, filters
 from pyrogram.enums import ParseMode
 import sys
 from datetime import datetime
-
 from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID, PORT, ADMINS
 
 class Bot(Client):
@@ -14,9 +13,7 @@ class Bot(Client):
             name="Bot",
             api_hash=API_HASH,
             api_id=APP_ID,
-            plugins={
-                "root": "plugins"
-            },
+            plugins={"root": "plugins"},
             workers=TG_BOT_WORKERS,
             bot_token=TG_BOT_TOKEN
         )
@@ -74,10 +71,8 @@ class Bot(Client):
     def create_reply_keyboard(self, buttons):
         return [[self.create_keyboard_button(text) for text in row] for row in buttons]
 
-main.py
-
-```python
-from bot import Bot
+# main.py
 
 if __name__ == "__main__":
+    from bot import Bot
     Bot().run()
