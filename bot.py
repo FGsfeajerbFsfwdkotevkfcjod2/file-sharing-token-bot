@@ -36,7 +36,7 @@ class Bot(Client):
 ░╚════╝░░╚════╝░╚═════╝░╚══════╝
                                           """)
         self.username = usr_bot_me.username
-        #web-response
+        # web-response
         app = web.AppRunner(await web_server())
         await app.setup()
         bind_address = "0.0.0.0"
@@ -58,7 +58,7 @@ class Bot(Client):
         await message.reply("Choose an action:", reply_markup=reply_markup)
 
     def create_reply_keyboard(self, buttons):
-        return [[self.bot.create_keyboard_button(text) for text in row] for row in buttons]
+        return [[self.create_keyboard_button(text) for text in row] for row in buttons]
 
 main.py
 from bot import Bot
