@@ -6,7 +6,7 @@ from pyrogram.enums import ParseMode
 import sys
 from datetime import datetime
 
-from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID, PORT
+from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID, PORT, ADMINS
 
 class Bot(Client):
     def __init__(self):
@@ -46,8 +46,8 @@ class Bot(Client):
         await super().stop()
         self.LOGGER(__name__).info("Bot stopped.")
 
-# Command handler for the admin panel
-    @Client.on_message(filters.command("admin") & filters.user(ADMIN_ID))  # Replace ADMIN_ID with your admin user ID
+    # Command handler for the admin panel
+    @Client.on_message(filters.command("admin") & filters.user(ADMINS))
     async def admin_panel(self, message):
         keyboard = [
             ["Update Repository"],
